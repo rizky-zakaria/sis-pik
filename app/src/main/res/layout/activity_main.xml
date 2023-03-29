@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_main"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            android:layout_width="75dp"
+            android:layout_height="75dp"/>
+
+        <TextView
+            android:id="@+id/nama"
+            android:text="Fazlina Zakaria"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/img"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_below="@id/nama"
+            android:text="elin@gmail.com"
+            android:layout_toRightOf="@id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/btnLogout"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textStyle="bold"
+                android:text="Logout"
+                android:textColor="#000"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_marginRight="15dp"
+                android:id="@+id/imgLogout"
+                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_item"
+        tools:listitem="@layout/list_item"
+        android:layout_below="@id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageButton
+        android:id="@+id/btnAdd"
+        android:src="@drawable/ic_baseline_add_circle_outline_24"
+        android:background="@drawable/btn_float"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+</RelativeLayout>

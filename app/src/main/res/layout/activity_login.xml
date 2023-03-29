@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="105dp"
+        android:layout_height="155dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_baseline_app_registration_24" />
+
+    <TextView
+        android:id="@+id/namaApk"
+        android:text="SIMKES HIV-AIDS"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_below="@id/img_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/namaApk"
+        android:id="@+id/til1"
+        android:layout_marginTop="10dp"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:paddingHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:hint="Username :"
+            android:inputType="textPersonName"
+            android:id="@+id/username"
+            android:textSize="15sp"
+            android:background="@drawable/bg_form_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/til1"
+        android:id="@+id/til2"
+        android:layout_marginTop="10dp"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:paddingHorizontal="20dp"
+        app:passwordToggleEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:inputType="textPassword"
+            android:hint="Password :"
+            android:id="@+id/password"
+            android:textSize="15sp"
+            android:background="@drawable/bg_form_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/til2"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_form_login"
+        android:text="Masuk"
+        android:id="@+id/masuk"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>
