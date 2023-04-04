@@ -11,16 +11,19 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/kegiatan"
             android:text="Nama Kegiatan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/tgl"
             android:text="Tanggal Kegiatan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/status"
             android:text="Status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

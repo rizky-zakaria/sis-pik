@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.PetugasActivity">
 
     <RelativeLayout
         android:id="@+id/rl1"
@@ -72,14 +72,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <ImageButton
-        android:id="@+id/btnAdd"
-        android:src="@drawable/ic_baseline_add_circle_outline_24"
-        android:background="@drawable/btn_float"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
+<!--    <ImageButton-->
+<!--        android:id="@+id/btnAdd"-->
+<!--        android:src="@drawable/ic_baseline_add_circle_outline_24"-->
+<!--        android:background="@drawable/btn_float"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="60dp"/>-->
 
 </RelativeLayout>

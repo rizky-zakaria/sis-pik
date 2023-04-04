@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.RegisterActivity">
 
     <ImageView
         android:id="@+id/img_logo"
@@ -24,9 +24,9 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:hint="Username :"
+            android:hint="Nama :"
             android:inputType="textPersonName"
-            android:id="@+id/username"
+            android:id="@+id/name"
             android:textSize="15sp"
             android:background="@drawable/bg_form_login"
             android:layout_width="match_parent"
@@ -40,13 +40,33 @@
         android:layout_marginTop="10dp"
         style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
         android:paddingHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:hint="Email :"
+            android:id="@+id/email"
+            android:textSize="15sp"
+            android:background="@drawable/bg_form_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/til2"
+        android:id="@+id/til3"
+        android:layout_marginTop="10dp"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:paddingHorizontal="20dp"
         app:passwordToggleEnabled="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
             android:inputType="textPassword"
-            android:hint="Password :"
+            android:hint="Password:"
             android:id="@+id/password"
             android:textSize="15sp"
             android:background="@drawable/bg_form_login"
@@ -58,22 +78,22 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@id/til2"
+        android:layout_below="@id/til3"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_form_login"
         android:text="Masuk"
-        android:id="@+id/masuk"
+        android:id="@+id/register"
         android:textColor="@color/black"
         android:textSize="15sp" />
 
     <TextView
         android:textColor="@color/black"
-        android:id="@+id/register"
+        android:id="@+id/login"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
         android:layout_alignParentBottom="true"
-        android:text="Belum punya akun? Register"
+        android:text="Sudah punya akun? Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

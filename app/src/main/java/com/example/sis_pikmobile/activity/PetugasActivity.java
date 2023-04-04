@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class PetugasActivity extends AppCompatActivity {
 
     RecyclerView list_item;
     private RecyclerView.Adapter adapter;
@@ -40,14 +40,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_petugas);
 
         sharedPrefManager = new SharedPrefManager(getApplicationContext());
 
         list_item = findViewById(R.id.list_item);
         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         list_item.setLayoutManager(layoutManager);
-        btnAdd = findViewById(R.id.btnAdd);
         btnLogout = findViewById(R.id.btnLogout);
 
         nama = findViewById(R.id.nama);
@@ -56,15 +55,11 @@ public class MainActivity extends AppCompatActivity {
         nama.setText(sharedPrefManager.getSPNama());
         email.setText(sharedPrefManager.getSPEmail());
 
-        btnAdd.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), FormActivity.class));
-        });
         btnLogout.setOnClickListener(view -> {
             logout();
         });
 
         getData(sharedPrefManager.getSpId());
-
     }
 
     private void logout() {
@@ -76,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getData(String spId) {
         ApiInterfaces apiInterfaces = ApiServer.konekRetrofit().create(ApiInterfaces.class);
-        Call<ResponseData> call = apiInterfaces.dataPermohonan(spId);
+        Call<ResponseData> call = apiInterfaces.dataPermohonanPetugas(spId);
         call.enqueue(new Callback<ResponseData>() {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
@@ -96,4 +91,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

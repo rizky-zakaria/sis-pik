@@ -13,7 +13,7 @@ public class ResponseUser {
     @Expose
     @SerializedName("user") UserModel userModel;
 
-    public boolean isSuccess() {
+    public boolean getSuccess() {
         return success;
     }
 

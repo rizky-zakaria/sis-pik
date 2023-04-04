@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.FormKartuActivity">
+
+    <RelativeLayout
+        android:background="@color/third"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:text="Sis-PIK"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_marginHorizontal="20dp"
+        android:text="Foto Kartu Keluarga:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:src="@drawable/baseline_image_24"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:textSize="18sp"
+        android:id="@+id/btnNext"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/btn_kirim"
+        android:text="Selanjutnya"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"/>
+
+</LinearLayout>
