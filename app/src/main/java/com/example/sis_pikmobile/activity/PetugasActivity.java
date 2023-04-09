@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.sis_pikmobile.R;
 import com.example.sis_pikmobile.adapter.PermohonanAdapter;
+import com.example.sis_pikmobile.adapter.PetugasAdapter;
 import com.example.sis_pikmobile.api.ApiInterfaces;
 import com.example.sis_pikmobile.api.ApiServer;
 import com.example.sis_pikmobile.model.DataModel;
@@ -35,7 +37,7 @@ public class PetugasActivity extends AppCompatActivity {
     ImageButton btnAdd;
     LinearLayout btnLogout;
     SharedPrefManager sharedPrefManager;
-    TextView nama, email;
+    TextView nama, email, kosong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class PetugasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_petugas);
 
         sharedPrefManager = new SharedPrefManager(getApplicationContext());
+
+        kosong = findViewById(R.id.kosong);
 
         list_item = findViewById(R.id.list_item);
         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -77,10 +81,11 @@ public class PetugasActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 if (response.isSuccessful()){
                     dataModels = response.body().getData();
-                    adapter = new PermohonanAdapter(getApplicationContext(), dataModels);
+                    adapter = new PetugasAdapter(getApplicationContext(), dataModels);
                     list_item.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }else {
+                    kosong.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Anda tidak memiliki data permohonan", Toast.LENGTH_SHORT).show();
                 }
             }

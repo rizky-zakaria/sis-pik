@@ -1,8 +1,6 @@
 package com.example.sis_pikmobile.adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sis_pikmobile.FormPetugasActivity;
 import com.example.sis_pikmobile.R;
-import com.example.sis_pikmobile.activity.FormRejectedActivity;
 import com.example.sis_pikmobile.api.ApiInterfaces;
 import com.example.sis_pikmobile.api.ApiServer;
 import com.example.sis_pikmobile.model.DataModel;
@@ -51,29 +49,16 @@ public class PetugasAdapter extends RecyclerView.Adapter<PetugasAdapter.HolderDa
         holder.tvKegiatan.setText(dataModel.getKegiatan());
         holder.tvTgl.setText(dataModel.getTgl_mulai()+" - "+dataModel.getTgl_selesai()+" / "+dataModel.getWaktu());
         holder.tvStatus.setText(dataModel.getStatus());
-        holder.img.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Konfimasi Tempat");
-            builder.setMessage("Klik Ya untuk konfirmasi tempat!")
-                    .setIcon(R.mipmap.ic_launcher)
-                    .setCancelable(false)
-                    .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int id) {
-                            konfirmasiTempat(dataModel.getId());
-                        }
-                    })
-                    .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            context.startActivity(new Intent(context.getApplicationContext(), FormRejectedActivity.class));
-//                            dialog.cancel();
-                        }
-                    });
-
-            // membuat alert dialog dari builder
-            AlertDialog alertDialog = builder.create();
-
-            // menampilkan alert dialog
-            alertDialog.show();
+        holder.itemView.setOnClickListener(view -> {
+            if (dataModel.getStatus().equals("diajukan")){
+//                Toast.makeText(context.getApplicationContext(), dataModel.getId().toString(), Toast.LENGTH_SHORT).show();
+                Context context = view.getContext();
+                Intent intent = new Intent(context, FormPetugasActivity.class);
+                intent.putExtra("ID", dataModel.getId().toString());
+                context.startActivity(intent);
+            }else {
+                Toast.makeText(context.getApplicationContext(), "Tidak dapat memverifikasi tempat", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

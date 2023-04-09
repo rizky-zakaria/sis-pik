@@ -1,14 +1,14 @@
 package com.example.sis_pikmobile.api;
 import com.example.sis_pikmobile.model.ResponseData;
+import com.example.sis_pikmobile.model.ResponseFile;
 import com.example.sis_pikmobile.model.ResponseUser;
+import com.example.sis_pikmobile.model.ResponseVerifikasi;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface ApiInterfaces {
 
@@ -40,8 +40,9 @@ public interface ApiInterfaces {
             @Field("id") String id
     );
 
+
     @FormUrlEncoded
-    @POST("api/post-permohonan")
+    @POST("api/permohonan-post")
     Call<ResponseData> postDataPermohonan(
             @Field("penanggung_jawab") String penanggung_jawab,
             @Field("kegiatan") String kegiatan,
@@ -67,15 +68,24 @@ public interface ApiInterfaces {
     );
 
     @FormUrlEncoded
+    @POST("api/permohonan-get-file")
+    Call<ResponseFile> getFile(
+        @Field("id") String id
+    );
+
+    @FormUrlEncoded
     @POST("api/post-permohonan-sp")
     Call<ResponseData> postDataSp(
             @Field("id") String id,
             @Field("sp") String sp
     );
 
-    @POST("api/konfirmasi")
-    Call<ResponseData> konfirmasiTempat(
-        @Field("id") String id
+    @FormUrlEncoded
+    @POST("api/permohonan-verifikasi")
+    Call<ResponseVerifikasi> konfirmasiTempat(
+        @Field("id") String id,
+        @Field("gambar") String gambar,
+        @Field("keterangan") String keterangan
     );
 
     @POST("api/tolak")

@@ -1,12 +1,11 @@
 package com.example.sis_pikmobile.adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sis_pikmobile.R;
-import com.example.sis_pikmobile.activity.MainActivity;
 import com.example.sis_pikmobile.api.ApiInterfaces;
 import com.example.sis_pikmobile.api.ApiServer;
 import com.example.sis_pikmobile.model.DataModel;
-import com.example.sis_pikmobile.model.ResponseData;
+import com.example.sis_pikmobile.model.ResponseFile;
+import com.example.sis_pikmobile.utils.Config;
 
 import java.util.List;
 
@@ -50,9 +49,36 @@ public class PermohonanAdapter extends RecyclerView.Adapter<PermohonanAdapter.Ho
         holder.tvKegiatan.setText(dataModel.getKegiatan());
         holder.tvTgl.setText(dataModel.getTgl_mulai()+" - "+dataModel.getTgl_selesai()+" / "+dataModel.getWaktu());
         holder.tvStatus.setText(dataModel.getStatus());
-
+        holder.itemView.setOnClickListener(view -> {
+            if (dataModel.getStatus().equals("disetujui")){
+                getFile(dataModels.get(position).getId(), view);
+            }else {
+                Toast.makeText(view.getContext(), "Permohonan belum disetujui", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    private void getFile(Integer id, View view) {
+        ApiInterfaces apiInterfaces = ApiServer.konekRetrofit().create(ApiInterfaces.class);
+        Call<ResponseFile> call = apiInterfaces.getFile(String.valueOf(id));
+        call.enqueue(new Callback<ResponseFile>() {
+            @Override
+            public void onResponse(Call<ResponseFile> call, Response<ResponseFile> response) {
+                if (response.isSuccessful()){
+                    Context context = view.getContext();
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.BASEURL +"uploads/img/"+response.body().getData().getHasil()));
+                    context.startActivity(intent);
+                }else {
+                    Toast.makeText(context.getApplicationContext(), "Gagal mendapatkan data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseFile> call, Throwable t) {
+                Toast.makeText(context.getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     @Override

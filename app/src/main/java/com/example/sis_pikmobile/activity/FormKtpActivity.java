@@ -44,15 +44,6 @@ public class FormKtpActivity extends AppCompatActivity {
     AppCompatButton btnNext;
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_WRITE_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            insertData(idPermohonan);
-        }
-    }
-
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_ktp);
@@ -77,6 +68,14 @@ public class FormKtpActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_WRITE_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            insertData(idPermohonan);
+        }
     }
 
     @Override
@@ -117,6 +116,7 @@ public class FormKtpActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Silahkan pilih gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
         }else {
             File imageFIle = new File(mediaPath);
+            Toast.makeText(getApplicationContext(), idPermohonan, Toast.LENGTH_SHORT).show();
             ApiInterfaces interfaces = ApiServer.konekRetrofit().create(ApiInterfaces.class);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
@@ -130,6 +130,7 @@ public class FormKtpActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), FormKartuActivity.class);
                         intent.putExtra("ID", idPermohonan);
                         startActivity(intent);
+                        finish();
                     }else {
                         Toast.makeText(getApplicationContext(), "Gagal Mengirim data", Toast.LENGTH_SHORT).show();
                     }

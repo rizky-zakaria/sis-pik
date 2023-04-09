@@ -23,6 +23,13 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="31">
         <activity
+            android:name=".FormPetugasActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.FormKartuActivity"
             android:exported="false" />
         <activity
@@ -30,12 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.FormKtpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.FormAcceptActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.FormRejectedActivity"
             android:exported="false" />
         <activity
             android:name=".activity.PetugasActivity"

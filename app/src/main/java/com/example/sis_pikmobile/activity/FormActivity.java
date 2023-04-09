@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -129,14 +130,16 @@ public class FormActivity extends AppCompatActivity {
 
     private void postPermohonan(String pj, String kegiatan, String lokasi, String tglMulai, String tglSelesai, String waktu, String id) {
         ApiInterfaces apiInterfaces = ApiServer.konekRetrofit().create(ApiInterfaces.class);
+        Log.d("TAG", "postPermohonan: "+pj+ kegiatan+ lokasi+ tglMulai+ tglSelesai+ waktu+ id);
         Call<ResponseData> call = apiInterfaces.postDataPermohonan(pj, kegiatan, lokasi, tglMulai, tglSelesai, waktu, id);
         call.enqueue(new Callback<ResponseData>() {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 if (response.isSuccessful()){
                     Intent intent = new Intent(getApplicationContext(), FormKtpActivity.class);
-                    intent.putExtra("ID", response.body().getData().get(0).getId());
+                    intent.putExtra("ID", response.body().getData().get(0).getId().toString());
                     startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(getApplicationContext(), "Gagal Melakukan Transaksi", Toast.LENGTH_SHORT).show();
                 }

@@ -128,6 +128,8 @@ public class FormSuratActivity extends AppCompatActivity {
 //                        intent.putExtra("ID", idPermohonan);
 //                        startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Berhasil Mengirim Data!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
                     }else {
                         Toast.makeText(getApplicationContext(), "Gagal Mengirim data", Toast.LENGTH_SHORT).show();
                     }
